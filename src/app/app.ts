@@ -8,5 +8,14 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'book-shelf';
+  protected title = 'book-shelf'
+
+  // constructor(private bookService: BookService) {
+  //
+  //   bookService.getBooks().subscribe(books => {
+  //     console.log(books);
+  //   })
+
+  // }
+
 }
