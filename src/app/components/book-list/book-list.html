@@ -1,0 +1,74 @@
+<h1>Lista Libri</h1>
+<button (click)="openCreateModal()">➕ Aggiungi nuovo libro</button>
+<table>
+  <thead>
+  <tr>
+    <th>Titolo</th>
+    <th>Autore</th>
+    <th>Genere</th>
+    <th>Anno</th>
+    <th>Pagine</th>
+    <th>ISBN</th>
+    <th>Disponibile</th>
+    <th>Azioni</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (book of books(); track book.id) {
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.genre }}</td>
+        <td>{{ book.publishedYear }}</td>
+        <td>{{ book.pages }}</td>
+        <td>{{ book.isbn }}</td>
+        <td>{{ book.available ? 'Sì' : 'No' }}</td>
+        <td>
+          <button (click)="openEditModal(book)">EDIT</button>
+          <button (click)="openDeleteModal(book)">DELETE</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<!-- Modale modifica -->
+@if (editing()) {
+  <div class="modal">
+    <h2>Modifica libro</h2>
+    <label>Titolo: <input [(ngModel)]="editModel.title" /></label><br />
+    <label>Autore: <input [(ngModel)]="editModel.author" /></label><br />
+    <label>Genere: <input [(ngModel)]="editModel.genre" /></label><br />
+    <label>Anno di pubblicazione: <input type="number" [(ngModel)]="editModel.publishedYear" /></label><br />
+    <label>Pagine: <input type="number" [(ngModel)]="editModel.pages" /></label><br />
+    <label>ISBN: <input [(ngModel)]="editModel.isbn" /></label><br />
+    <label>Disponibile: <input type="checkbox" [(ngModel)]="editModel.available" /></label><br />
+    <button (click)="saveEdit()">Salva</button>
+    <button (click)="closeModal()">Annulla</button>
+  </div>
+}
+
+<!-- Modale creazione -->
+@if (creating()) {
+  <div class="modal">
+    <h2>Nuovo libro</h2>
+    <label>Titolo: <input [(ngModel)]="newBook.title" /></label><br />
+    <label>Autore: <input [(ngModel)]="newBook.author" /></label><br />
+    <label>Genere: <input [(ngModel)]="newBook.genre" /></label><br />
+    <label>Anno di pubblicazione: <input type="number" [(ngModel)]="newBook.publishedYear" /></label><br />
+    <label>Pagine: <input type="number" [(ngModel)]="newBook.pages" /></label><br />
+    <label>ISBN: <input [(ngModel)]="newBook.isbn" /></label><br />
+    <label>Disponibile: <input type="checkbox" [(ngModel)]="newBook.available" /></label><br />
+    <button (click)="saveNewBook()">Aggiungi</button>
+    <button (click)="closeModal()">Annulla</button>
+  </div>
+}
+
+<!-- Modale eliminazione -->
+@if (deleting()) {
+  <div class="modal">
+    <p>Sei sicuro di voler eliminare <b>{{ deleteModel.title }}</b>?</p>
+    <button (click)="confirmDelete()"> Sì</button>
+    <button (click)="closeModal()"> No</button>
+  </div>
+}
