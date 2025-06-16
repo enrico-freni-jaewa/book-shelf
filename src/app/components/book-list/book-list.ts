@@ -72,7 +72,7 @@ export class BookList implements OnInit {
       return;
     }
     this.bookService.deleteBook(this.deleteModel.id).subscribe(() => {
-      this.books.update(books => books.filter(b => b.id !== this.deleteModel.id));
+      this.bookService.getBooks().subscribe(res => this.books.set(res));
       this.closeModal();
     });
   }
