@@ -1,4 +1,4 @@
-export interface Book {
+export interface BookModel {
   id?: string;
   title: string;
   author: string;
@@ -7,4 +7,5 @@ export interface Book {
   pages: number;
   isbn: string;
   available: boolean;
+  score?:number;
 }
