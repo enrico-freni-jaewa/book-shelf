@@ -1,19 +1,18 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 import { BookModel } from '../model/book-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-
   constructor(private http: HttpClient) {}
 
   private apiUrl = 'http://localhost:3000/books';
 
-  getBooks(): Observable<BookModel[]> {
-    return this.http.get<BookModel[]>(this.apiUrl).pipe(
+  getBooks(): Observable<BookModel[]> {//Observable?"Scatola" su cui posso osservare e decidere di conseguenza
+    return this.http.get<BookModel[]>(this.apiUrl).pipe(//mi metto in ascolto sull'observable
       catchError(this.handleError)
     );
   }
@@ -24,7 +23,6 @@ export class BookService {
       catchError(this.handleError)
     );
   }
-
   addBook(book: Omit<BookModel, 'id'>): Observable<BookModel> {
     return this.http.post<BookModel>(this.apiUrl, book).pipe(
       catchError(this.handleError)
@@ -37,6 +35,7 @@ export class BookService {
       catchError(this.handleError)
     );
   }
+
 
   patchBook(id: string, partialBook: Partial<BookModel>): Observable<BookModel> {
     const url = `${this.apiUrl}/${id}`;

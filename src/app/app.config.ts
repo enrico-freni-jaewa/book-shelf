@@ -1,3 +1,4 @@
+//si inseriscono i provider: funzioni usate in tutta l'app
 import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,

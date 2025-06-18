@@ -12,3 +12,5 @@ export const routes: Routes = [
     component: BookList
   }
 ]; // definisce gli URLs
+
+//equivale al navigationpagemanager

@@ -1,4 +1,5 @@
 <div class="book">
+
     <h3>{{ book.title }}</h3>
     <p><strong>Autore:</strong> {{ book.author }}</p>
     <p><strong>Genere:</strong> {{ book.genre }}</p>
@@ -6,12 +7,19 @@
     <p><strong>ISBN:</strong> {{ book.isbn }}</p>
     <p><strong>Disponibile:</strong> {{ book.available ? 'Sì' : 'No' }}</p>
 
-    <div class="stars"  *ngIf="book.score !== undefined">
-        <ng-container *ngFor="let star of getStarsArray(book.score)">
-            <span *ngIf="star === 'full'" class="star full">★</span>
-            <span *ngIf="star === 'half'" class="star half">☆</span>
-            <span *ngIf="star === 'empty'" class="star empty">☆</span>
-        </ng-container>
-    </div>
+    @if(book.score!==undefined){
+      <div class="stars">
+        @for(star of getStarsArray(book.score); track star){
+          <ng-container>
+            @if(star == "full" ){<span class="star" style="--percent: 100%">★</span>}
+            @if(star == "half"){<span class="star" style="--percent: 50%">★</span>}
+            @if(star == "empty"){<span class="star" style="--percent: 0%">★</span>}
+          </ng-container>
+        }
+      </div>
+    }
+
+  <button (click)="editBook()">Edit</button>
+  <button (click)="deleteBook()">Delete</button>
 </div>
 

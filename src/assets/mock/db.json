@@ -1,17 +1,6 @@
 {
   "books": [
     {
-      "id": "1",
-      "title": "Il nome della rosa",
-      "author": "Umberto Eco",
-      "genre": "Giallo storico",
-      "publishedYear": 1980,
-      "pages": 512,
-      "isbn": "9788807882062",
-      "available": true,
-      "score": 4
-    },
-    {
       "id": "2",
       "title": "1984",
       "author": "George Orwell",
@@ -42,7 +31,7 @@
       "pages": 279,
       "isbn": "9788807900520",
       "available": true,
-      "score": 3
+      "score": "2"
     },
     {
       "id": "5",

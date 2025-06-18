@@ -5,3 +5,19 @@
     border-radius: 8px;
     background-color: #f9f9f9;
 }
+
+
+.star {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #ddd; /* colore di fallback per browser vecchi */
+  background: linear-gradient(
+    to right,
+    black var(--percent),
+    #ddd var(--percent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Arial, sans-serif;
+}
+

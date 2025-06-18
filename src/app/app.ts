@@ -6,7 +6,7 @@ import { BookList } from './components/book-list/book-list'; // percorso corrett
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, BookList],
+  imports: [RouterOutlet],
   standalone:true,
   templateUrl: './app.html',
   styleUrl: './app.css'
