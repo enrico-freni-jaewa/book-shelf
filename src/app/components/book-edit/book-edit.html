@@ -1,0 +1,136 @@
+<h4>Book Edit</h4>
+
+<div class="book-form">
+  @if (bookForm){
+    <form [formGroup]="bookForm">
+      <div class="form-container">
+        <div>
+          <label for="title">Title</label>
+          <input id="title" type="text" formControlName = "title" />
+          @if (form.get('title')?.invalid && (form.get('title')?.dirty || form.get('title')?.touched )){
+            <div class="alert">
+              @if (form.get('title')?.hasError('required')) {
+                <div>
+                  Title is required.
+                </div>
+              }
+
+
+            </div>
+          }
+        </div>
+        <div>
+          <label for="author">Author</label>
+          <input id="author" type="text" formControlName = "author" />
+          @if (form.get('author')?.invalid && (form.get('author')?.dirty || form.get('author')?.touched )){
+            <div class="alert">
+              @if (form.get('author')?.hasError('required')) {
+                <div>
+                  Author is required.
+                </div>
+              }
+
+
+            </div>
+          }
+        </div>
+        <div>
+          <label for="genre">Genre</label>
+          <input id="genre" type="text" formControlName = "genre" />
+          @if (form.get('genre')?.invalid && (form.get('genre')?.dirty || form.get('genre')?.touched )){
+            <div class="alert">
+              @if (form.get('genre')?.hasError('required')) {
+                <div>
+                  Genre is required.
+                </div>
+              }
+
+
+            </div>
+          }
+        </div>
+        <div>
+          <label for="publishedYear">Published Year</label>
+          <input id="publishedYear" type="text" formControlName = "publishedYear" />
+          @if (form.get('publishedYear')?.invalid && (form.get('publishedYear')?.dirty || form.get('publishedYear')?.touched )){
+            <div class="alert">
+              @if (form.get('publishedYear')?.hasError('required')) {
+                <div>
+                  Published Year is required.
+                </div>
+              }
+
+
+            </div>
+          }
+        </div>
+        <div>
+          <label for="pages">Pages</label>
+          <input id="pages" type="text" formControlName = "pages" />
+          @if (form.get('pages')?.invalid && (form.get('pages')?.dirty || form.get('pages')?.touched )){
+            <div class="alert">
+              @if (form.get('pages')?.hasError('required')) {
+                <div>
+                  Pages is required.
+                </div>
+              }
+
+
+            </div>
+          }
+        </div>
+        <div>
+          <label for="isbn">isbn</label>
+          <input id="isbn" type="text" formControlName = "isbn" />
+          @if (form.get('isbn')?.invalid && (form.get('isbn')?.dirty || form.get('isbn')?.touched )){
+            <div class="alert">
+              @if (form.get('isbn')?.hasError('required')) {
+                <div>
+                  Isbn is required.
+                </div>
+              }
+
+
+            </div>
+          }
+        </div>
+        <div>
+          <label for="available">Available</label>
+          <input id="available" type="text" formControlName = "available" />
+          @if (form.get('available')?.invalid && (form.get('available')?.dirty || form.get('available')?.touched )){
+            <div class="alert">
+              @if (form.get('available')?.hasError('required')) {
+                <div>
+                  Availability is required.
+                </div>
+              }
+
+
+            </div>
+          }
+        </div>
+        <div>
+          <label for="score">Score</label>
+          <input id="score" type="text" formControlName = "score" />
+          @if (form.get('score')?.invalid && (form.get('score')?.dirty || form.get('score')?.touched )){
+            <div class="alert">
+              @if (form.get('score')?.hasError('required')) {
+                <div>
+                  Score is required.
+                </div>
+              }
+
+
+            </div>
+          }
+        </div>
+        <div>
+          <button (click)="closeModal()">Annulla</button>
+          <button [disabled]="form.invalid" (click)="saveBook()">Salva</button>
+        </div>
+      </div>
+
+    </form>
+
+  }
+</div>

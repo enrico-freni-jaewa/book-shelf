@@ -1,0 +1,27 @@
+.book-form{
+  display: Flex;
+  flex-direction: column;
+
+}
+
+.form-item{
+  display: Flex;
+  flex-direction: column;
+  height:700px;
+  gap: 1em ;
+}
+
+.form-container{
+  padding: 5px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.alert{
+  color: red;
+}
