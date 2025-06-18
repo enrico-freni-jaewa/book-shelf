@@ -1,0 +1,47 @@
+<div style="padding: 1rem">
+  <h4>Book Edit</h4>
+
+  <div class="book-form">
+    @if (bookForm) {
+      <form [formGroup]="bookForm">
+        <div class="form-item">
+          <label for="title">Title</label>
+          <input id="title" type="text" formControlName="title"/>
+        </div>
+        <div class="form-item">
+          <label for="author">Author</label>
+          <input id="author" type="text" formControlName="author"/>
+        </div>
+        <div class="form-item">
+          <label for="genre">Genre</label>
+          <input id="genre" type="text" formControlName="genre"/>
+        </div>
+        <div class="form-item">
+          <label for="publishedYear">Published Year</label>
+          <input id="publishedYear" type="text" formControlName="publishedYear"/>
+        </div>
+        <div class="form-item">
+          <label for="pages">Pages</label>
+          <input id="pages" type="text" formControlName="pages"/>
+        </div>
+        <div class="form-item">
+          <label for="isbn">Isbn</label>
+          <input id="isbn" type="text" formControlName="isbn"/>
+        </div>
+        <div class="form-item">
+          <label for="available">Available</label>
+          <input id="available" type="text" formControlName="available"/>
+        </div>
+        <div class="form-item">
+          <label for="score">Score</label>
+          <input id="score" type="text" formControlName="score"/>
+        </div>
+      </form>
+
+      <div>
+        <button (click)="closeModal()">Annulla</button>
+        <button [disabled]="form.invalid" (click)="saveBook()">Salva</button>
+      </div>
+    }
+  </div>
+</div>

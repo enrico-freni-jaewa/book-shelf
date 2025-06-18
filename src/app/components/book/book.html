@@ -1,6 +1,8 @@
-<div [ngStyle]="{'color': book()?.available ? 'green' : 'red'}">
+<div class="book">
   {{ book()?.title }}
+  <div style="display:flex; gap:0.5rem;">
+    <button (click)="editBook()">Edit</button>
+    <button (click)="deleteBook()">Delete</button>
+  </div>
 </div>
 
-
-<div></div>
