@@ -8,7 +8,8 @@
       "publishedYear": 1980,
       "pages": 512,
       "isbn": "9788807882062",
-      "available": true
+      "available": true,
+      "score": 4.5
     },
     {
       "id": "2",
@@ -18,7 +19,8 @@
       "publishedYear": 1949,
       "pages": 328,
       "isbn": "9780451524935",
-      "available": false
+      "available": false,
+      "score": 4
     },
     {
       "id": "3",
@@ -28,7 +30,8 @@
       "publishedYear": 1954,
       "pages": 1178,
       "isbn": "9788804668232",
-      "available": true
+      "available": true,
+      "score": 5
     },
     {
       "id": "4",
@@ -38,7 +41,8 @@
       "publishedYear": 1813,
       "pages": 279,
       "isbn": "9788807900520",
-      "available": true
+      "available": true,
+      "score": 2.5
     },
     {
       "id": "5",
@@ -48,7 +52,8 @@
       "publishedYear": 1943,
       "pages": 96,
       "isbn": "9788804668423",
-      "available": false
+      "available": false,
+      "score": 1
     }
   ]
 }

@@ -1,0 +1,5 @@
+<p>Books:</p>
+
+@for(book of books(); track book.id) {
+<app-book [book]="book"></app-book>
+}
