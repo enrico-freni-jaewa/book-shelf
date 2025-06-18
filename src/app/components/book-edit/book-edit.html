@@ -1,0 +1,38 @@
+<div style="padding: 1rem;">
+  <h3>Book Edit</h3>
+  <div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="bookForm">
+      <div>
+        <label for="title">Title:</label>
+        <input id="title" formControlName="title" />
+
+      </div>
+
+      <div>
+        <label for="author">Author:</label>
+        <input id="author" formControlName="author" />
+      </div>
+
+      <div>
+        <label for="isbn">ISBN:</label>
+        <input id="isbn" formControlName="isbn" />
+      </div>
+
+      <div>
+        <label for="available">Available:</label>
+        <input type="checkbox" id="available" formControlName="available" />
+      </div>
+
+      <div>
+        <label for="score">Score:</label>
+        <input type="number" id="score" formControlName="score" />
+      </div>
+
+
+
+      <button type="submit" [disabled]="bookForm.invalid">Save</button>
+      <button type="button" (click)="closeDialog()">Cancel</button>
+    </form>
+  </div>
+
+</div>
