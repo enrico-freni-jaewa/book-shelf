@@ -6,41 +6,41 @@
       <form [formGroup]="bookForm">
         <div class="form-item">
           <label for="title">Title</label>
-          <input id="title" type="text" formControlName="title"/>
+          <input class="outline" id="title" type="text" formControlName="title"/>
         </div>
         <div class="form-item">
           <label for="author">Author</label>
-          <input id="author" type="text" formControlName="author"/>
+          <input class="outline" id="author" type="text" formControlName="author"/>
         </div>
         <div class="form-item">
           <label for="genre">Genre</label>
-          <input id="genre" type="text" formControlName="genre"/>
+          <input class="outline" id="genre" type="text" formControlName="genre"/>
         </div>
         <div class="form-item">
           <label for="publishedYear">Published Year</label>
-          <input id="publishedYear" type="text" formControlName="publishedYear"/>
+          <input class="outline"  id="publishedYear" type="text" formControlName="publishedYear"/>
         </div>
         <div class="form-item">
           <label for="pages">Pages</label>
-          <input id="pages" type="text" formControlName="pages"/>
+          <input class="outline"  id="pages" type="text" formControlName="pages"/>
         </div>
         <div class="form-item">
           <label for="isbn">Isbn</label>
-          <input id="isbn" type="text" formControlName="isbn"/>
+          <input class="outline"  id="isbn" type="text" formControlName="isbn"/>
         </div>
         <div class="form-item">
           <label for="available">Available</label>
-          <input id="available" type="text" formControlName="available"/>
+          <input class="outline" id="available" type="text" formControlName="available"/>
         </div>
         <div class="form-item">
           <label for="score">Score</label>
-          <input id="score" type="text" formControlName="score"/>
+          <input class="outline"  id="score" type="text" formControlName="score"/>
         </div>
       </form>
 
-      <div>
-        <button (click)="closeModal()">Annulla</button>
-        <button [disabled]="form.invalid" (click)="saveBook()">Salva</button>
+      <div class="flex gap-2">
+        <button class="bg-red-600 rounded-2xl text-white p-2 w-fit cursor-pointer"  (click)="closeModal()">Annulla</button>
+        <button class="bg-green-600 rounded-2xl text-white p-2 w-fit cursor-pointer"  [disabled]="form.invalid" (click)="saveBook()">Salva</button>
       </div>
     }
   </div>

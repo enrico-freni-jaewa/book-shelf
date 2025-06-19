@@ -1,9 +1,13 @@
-<h3>Book list</h3>
+<div class="flex flex-col pl-0.5 pr-0.5 gap-2">
 
-<button (click)="addBook()">Add book</button>
+  <div class="pl-2">
+  <h3 class="text-3xl">Book list</h3>
 
-@for (book of books(); track book.id) {
-  <div>
-    <app-book (onDelete)="deleteBook($event)" [book]="book"></app-book>
+  <button class="bg-blue-600 rounded-2xl text-white p-2 w-fit" (click)="addBook()">Add book</button>
   </div>
-}
+  @for (book of books(); track book.id) {
+    <div class="w-full">
+      <app-book (onDelete)="deleteBook($event)" [book]="book"></app-book>
+    </div>
+  }
+</div>

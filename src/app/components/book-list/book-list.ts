@@ -30,11 +30,9 @@ export class BookList implements OnInit {
       console.debug("Can't delete book with id");
       return;
     }
-
     this.bookService.deleteBook(book.id).subscribe(() => {
       console.log(`Book with id ${book.id}`);
       this.bookService.getBooks().subscribe(books => this.books.set(books));
-
     })
 
   }

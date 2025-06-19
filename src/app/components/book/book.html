@@ -1,8 +1,37 @@
-<div class="book">
+<div class="flex gap-2 w-full outline h-12 justify-between items-center p-2">
+  <span class="w-1/6">
   {{ book()?.title }}
-  <div style="display:flex; gap:0.5rem;">
-    <button (click)="editBook()">Edit</button>
-    <button (click)="deleteBook()">Delete</button>
+  </span>
+  <span class="w-1/6">
+  {{ book()?.author }}
+  </span>
+  <span class="w-1/6">
+  {{ book()?.genre }}
+  </span>
+  <span class="w-1/6">
+  {{ book()?.publishedYear }}
+  </span>
+  <span class="w-1/6">
+  {{ book()?.available }}
+  </span>
+  <div class="w-1/6">
+    @for (i of [1, 2, 3, 4, 5]; track i) {
+      @switch (getStarType(i, book()?.score)) {
+        @case ('full') {
+          <span>★</span>
+        }
+        @case ('half') {
+          <span>⯨</span>
+        }
+        @default {
+          <span>☆</span>
+        }
+      }
+    }
+  </div>
+  <div class="flex gap-3">
+    <button class="bg-emerald-600 rounded-2xl text-white p-2 w-fit cursor-pointer" (click)="editBook()">Edit</button>
+    <button class="bg-red-600 rounded-2xl text-white p-2 w-fit cursor-pointer" (click)="deleteBook()">Delete</button>
   </div>
 </div>
 

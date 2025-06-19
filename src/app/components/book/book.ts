@@ -34,4 +34,19 @@ export class Book {
     this.onDelete.emit(this.book());
   }
 
+  getStarType(positionArrayIndex: number, score?: number): 'full' | 'half' | 'empty' {
+    if (!score) {
+      return 'empty';
+    }
+    let scoreGreaterOrEqualThanIndex = positionArrayIndex <= Math.floor(score);
+    if (scoreGreaterOrEqualThanIndex) {
+      return 'full';
+    }
+    let halfStar = positionArrayIndex - 0.5 <= score;
+    if (halfStar) {
+      return 'half';
+    }
+    return 'empty';
+  }
+
 }
