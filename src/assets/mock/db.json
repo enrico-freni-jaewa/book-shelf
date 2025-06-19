@@ -39,16 +39,6 @@
       "pages": 279,
       "isbn": "9788807900520",
       "available": true
-    },
-    {
-      "id": "5",
-      "title": "Il piccolo principe",
-      "author": "Antoine de Saint-Exupéry",
-      "genre": "Narrativa per ragazzi",
-      "publishedYear": 1943,
-      "pages": 96,
-      "isbn": "9788804668423",
-      "available": false
     }
   ]
 }

@@ -1,8 +1,9 @@
 <h3>Book list</h3>
 
+<button (click)="addBook()">Add book</button>
 
 @for (book of books(); track book.id) {
   <div>
-    <app-book [book]="book"></app-book>
+    <app-book (onDelete)="deleteBook($event)" [book]="book"></app-book>
   </div>
 }

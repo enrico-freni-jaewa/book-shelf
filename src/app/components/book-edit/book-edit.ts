@@ -53,7 +53,14 @@ export class BookEdit implements OnInit {
       ...this.form.value
     }
 
-    this.bookService.updateBook(book).subscribe(() => this.closeModal());
+    if(book.id){
+      this.bookService.updateBook(book).subscribe(() => this.closeModal());
+    } else {
+      this.bookService.addBook(book).subscribe(() => {
+        this.closeModal();
+      });
+    }
+
   }
 
   private initForm() {

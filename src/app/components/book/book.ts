@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 import {BookModel} from '../../model/book-model';
 import {NgStyle} from '@angular/common';
 import {BookEdit} from '../book-edit/book-edit';
@@ -14,6 +14,9 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class Book {
 
+  @Output()
+  onDelete = new EventEmitter<BookModel>();
+
   constructor(private dialog: MatDialog) {
   }
 
@@ -28,7 +31,7 @@ export class Book {
   }
 
   deleteBook() {
-
+    this.onDelete.emit(this.book());
   }
 
 }
