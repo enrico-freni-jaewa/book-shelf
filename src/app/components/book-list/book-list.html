@@ -7,7 +7,7 @@
   </div>
   @for (book of books(); track book.id) {
     <div class="w-full">
-      <app-book (onDelete)="deleteBook($event)" [book]="book"></app-book>
+      <app-book (onEdit)="updateBookList($event)" (onDelete)="deleteBook($event)" [book]="book"></app-book>
     </div>
   }
 </div>

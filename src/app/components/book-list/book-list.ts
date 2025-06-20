@@ -1,8 +1,8 @@
 import {Component, OnInit, signal} from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {BookModel} from '../../model/book-model';
 import {BookService} from '../../service/book-service';
-import { BookEdit } from '../book-edit/book-edit';
+import {BookEdit} from '../book-edit/book-edit';
 import {Book} from '../book/book';
 
 @Component({
@@ -26,7 +26,7 @@ export class BookList implements OnInit {
   }
 
   deleteBook(book: BookModel): void {
-    if(!book?.id){
+    if (!book?.id) {
       console.debug("Can't delete book with id");
       return;
     }
@@ -43,7 +43,13 @@ export class BookList implements OnInit {
       width: '600px',
       data: {}
     }).afterClosed().subscribe(() => {
-        this.bookService.getBooks().subscribe(books => this.books.set(books));
+      this.bookService.getBooks().subscribe(books => this.books.set(books));
     });
+  }
+
+  updateBookList(isBookEdited: boolean) {
+    if (isBookEdited) {
+      this.bookService.getBooks().subscribe(books => this.books.set(books));
+    }
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BookService} from '../../service/book-service';
 import {Form, FormBuilder, FormGroup, NgForm, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -39,8 +39,8 @@ export class BookEdit implements OnInit {
     });
   }
 
-  closeModal() {
-    this.dialogRef.close();
+  closeModal(isBookEdited: boolean = false) {
+    this.dialogRef.close(isBookEdited);
   }
 
   saveBook() {
@@ -54,7 +54,7 @@ export class BookEdit implements OnInit {
     }
 
     if(book.id){
-      this.bookService.updateBook(book).subscribe(() => this.closeModal());
+      this.bookService.updateBook(book).subscribe(() => this.closeModal(true));
     } else {
       this.bookService.addBook(book).subscribe(() => {
         this.closeModal();
