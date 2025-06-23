@@ -1,61 +1,61 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {BookModel} from "../../model/book-model";
-import {CommonModule} from "@angular/common";
+import {Component, EventEmitter, input, output, Output} from '@angular/core';
+import {BookModel} from '../../model/book-model';
+import {NgStyle} from '@angular/common';
 import {BookEdit} from '../book-edit/book-edit';
 import {MatDialog} from '@angular/material/dialog';
-import {BookService} from '../../service/book-service';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-book',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [
+    NgStyle,
+    MatCardModule,
+    MatButtonModule
+  ],
+  standalone:true,
   templateUrl: './book.html',
   styleUrl: './book.css'
 })
 export class Book {
 
-  constructor( private dialog : MatDialog, private bookService: BookService){
+  @Output()
+  onDelete = new EventEmitter<BookModel>();
 
+  @Output()
+  onEdit= new EventEmitter<boolean>(); //nome evento+ emettere l'evento fuori
+
+  constructor(private dialog: MatDialog) {
   }
 
-  @Input() book!: BookModel; //@Input?consente di passare dati da un componente genitore a un componente figlio
-  @Output() bookDeleted = new EventEmitter<string>();
+  book = input<BookModel>();
 
-  getStarsArray(score: number | undefined): string[] {
-    if (score === undefined) {
-      return Array(5).fill('empty');
-    }
-    const fullStars = Math.floor(score);
-    const halfStar = score % 1 >= 0.5 ? 1 : 0;
-    const emptyStars = 5 - fullStars - halfStar;
 
-    return [
-      ...Array(fullStars).fill('full'),
-      ...Array(halfStar).fill('half'),
-      ...Array(emptyStars).fill('empty')
-    ];
-  }
-
-  editBook(){
-    let dialogRef= this.dialog.open(BookEdit, {
-      height: '400px',
+  editBook() {
+    let dialogRef = this.dialog.open(BookEdit, {
+      height: '700px',
       width: '600px',
-      data: {id: this.book.id}
-    })
-
+      data: {id: this.book()?.id}
+    }).afterClosed().subscribe((isBookEdited:boolean) => this.onEdit.emit(isBookEdited));
   }
 
-  deleteBook(){
-      if (!this.book.id) {
-        console.error('Book ID is undefined. Cannot delete the book.');
-        return;
-      }
-
-      if (confirm(`Are you sure you want to delete the book "${this.book.title}"?`)) {
-        this.bookService.deleteBook(this.book.id).subscribe(() => {
-          this.bookDeleted.emit(this.book.id); // Notifica il genitore
-        });
-      }
-
+  deleteBook() {
+    this.onDelete.emit(this.book());
   }
+
+  getStarType(positionArrayIndex: number, score?: number): 'full' | 'half' | 'empty' {
+    if (!score) {
+      return 'empty';
+    }
+    let scoreGreaterOrEqualThanIndex = positionArrayIndex <= Math.floor(score);
+    if (scoreGreaterOrEqualThanIndex) {
+      return 'full';
+    }
+    let halfStar = positionArrayIndex - 0.5 <= score;
+    if (halfStar) {
+      return 'half';
+    }
+    return 'empty';
+  }
+
 }

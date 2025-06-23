@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {BookService} from './service/book-service';
-import { BookList } from './components/book-list/book-list'; // percorso corretto
-
-
+import {BookList} from './components/book-list/book-list';
+import {MatToolbarRow} from "@angular/material/toolbar";
+import {MatIcon} from '@angular/material/icon';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatToolbarRow, MatIcon, BookList],
   standalone:true,
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -14,12 +13,12 @@ import { BookList } from './components/book-list/book-list'; // percorso corrett
 export class App {
   protected title = 'book-shelf'
 
-  constructor(private bookService: BookService) {
+  // constructor(private bookService: BookService) {
+  //
+  //   bookService.getBooks().subscribe(books => {
+  //     console.log(books);
+  //   })
 
-       bookService.getBooks().subscribe(books => {
-       console.log(books);
-     })
-
-   }
+  // }
 
 }

@@ -1,5 +1,24 @@
-<h2>Book list</h2>
+<div class="flex flex-col pl-0.5 pr-0.5" >
+  <mat-toolbar-row class="secondary-toolbar">
+    <span class="bookListTitle">Book-List </span>
+    <button mat-flat-button (click)="addBook()" class="addBookButton">Add Book</button>
 
-@for (book of books(); track book.id) {
-  <app-book [book]="book" ></app-book>
-}
+    <div class="ms-auto me-3 d-flex align-items-center search-bar ">
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        placeholder="Search books..."
+        [(ngModel)]="searchQuery"
+        (input)="filterBooks()"
+      />
+      <mat-icon class="searchLense">search</mat-icon>
+    </div>
+
+  </mat-toolbar-row>
+
+  <div class="flex flex-row flex-wrap gap-4" >
+    @for (book of filteredBooks(); track book.id) {
+      <app-book (onEdit)="updateBookList($event)" (onDelete)="deleteBook($event)" [book]="book"></app-book>
+    }
+  </div>
+</div>

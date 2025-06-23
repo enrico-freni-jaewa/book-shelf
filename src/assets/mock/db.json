@@ -9,7 +9,7 @@
       "pages": 328,
       "isbn": "9780451524935",
       "available": false,
-      "score": 3.5
+      "score": "3"
     },
     {
       "id": "3",
@@ -31,7 +31,7 @@
       "pages": 279,
       "isbn": "9788807900520",
       "available": true,
-      "score": "2"
+      "score": "4.5"
     },
     {
       "id": "5",
@@ -42,7 +42,7 @@
       "pages": 96,
       "isbn": "9788804668423",
       "available": false,
-      "score": 4.5
+      "score": "5"
     }
   ]
 }

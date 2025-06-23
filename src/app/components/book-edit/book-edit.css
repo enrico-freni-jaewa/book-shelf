@@ -19,9 +19,25 @@
   justify-content: space-between;
   gap: 4px;
   background-color: #f8f8f8;
-  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .alert{
   color: red;
+}
+
+.popupTitle{
+  margin-left: 5%;
+}
+
+.formRow{
+  margin-top: 2%;
+}
+
+.popUpButton{
+  background-color: turquoise;
+  color: black;
+  margin-bottom: 4%;
+}
+.popUpButton:hover{
+  text-decoration: underline;
 }

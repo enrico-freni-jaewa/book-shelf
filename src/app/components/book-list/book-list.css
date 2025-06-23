@@ -1,0 +1,46 @@
+
+.secondary-toolbar{
+  background-color: darkseagreen;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height:50px;
+}
+.bookListTitle{
+  font-size: 20px;
+  font-family: 'Arial', sans-serif;
+  color: black;
+  margin-left: 2%;
+
+}
+.addBookButton{
+  margin-left: 2%;
+  background-color: aquamarine !important;
+  border-radius: 0; /* Ensure no rounded corners */
+  width: 120px; /* Adjust width */
+  height: 30px; /* Adjust height */
+  color: black !important;
+  text-align: justify;
+}
+
+.addBookButton:hover {
+  text-decoration: underline;
+}
+.ms-auto {
+  margin-left: auto;
+  margin-right: 5%;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  height: 30px; /* Adjust height if needed */
+}
+
+.search-bar .searchLense {
+  margin-left: 5px; /* Add spacing between input and icon */
+  vertical-align: middle; /* Align icon vertically */
+  font-size: 20px; /* Adjust icon size if needed */
+}

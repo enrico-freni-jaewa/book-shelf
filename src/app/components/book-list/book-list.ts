@@ -1,59 +1,85 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BookModel } from '../../model/book-model';
-import { BookService } from '../../service/book-service';
-import {Book} from '../book/book';
-import {BookEdit} from '../book-edit/book-edit';
+import {Component, OnInit, signal} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import {interval, Subscription} from 'rxjs';
+import {BookModel} from '../../model/book-model';
+import {BookService} from '../../service/book-service';
+import { BookEdit } from '../book-edit/book-edit';
+import {Book} from '../book/book';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import {MatToolbarRow} from '@angular/material/toolbar';
+import {MatFormField} from '@angular/material/input';
+import {MatIcon} from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
+
+
 @Component({
   selector: 'app-book-list',
   imports: [
-    FormsModule, Book
+    Book,
+    MatGridListModule,
+    MatButtonModule,
+    MatToolbarRow,
+    MatFormField,
+    MatIcon,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
   standalone:true,
   templateUrl: './book-list.html',
   styleUrl: './book-list.css'
 })
-
 export class BookList implements OnInit {
+
   books = signal<BookModel[]>([]);
-  private pollingSubscription!: Subscription;
-  constructor(private bookService: BookService,
-              private dialog: MatDialog ) {
-  }
-  openEditDialog(bookId: string) {
-    const dialogRef = this.dialog.open(BookEdit, {
-      data: { id: bookId }
-    });
+  filteredBooks = signal<BookModel[]>([]);
+  searchQuery: string = '';
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'updated') {
-        // Ricarica la lista dei libri
-        this.loadBooks();
-      }
-    });
+  constructor(private readonly bookService: BookService, private dialog: MatDialog) {
+
   }
 
-  private loadBooks() {
+  ngOnInit(): void {
     this.bookService.getBooks().subscribe(books => {
-      this.books.set(books); // Assumendo che usi un signal
+      this.books.set(books);
+      this.filteredBooks.set(books)});
+  }
+
+  deleteBook(book: BookModel): void {
+    if(!book?.id){
+      console.debug("Can't delete book with id");
+      return;
+    }
+    this.bookService.deleteBook(book.id).subscribe(() => {
+      console.log(`Book with id ${book.id}`);
+      this.bookService.getBooks().subscribe(books => this.books.set(books));
+    })
+
+  }
+
+  addBook() {
+    let dialogRef = this.dialog.open(BookEdit, {
+      height: '500px',
+      width: '800px',
+      data: {}
+    }).afterClosed().subscribe(() => {
+      this.bookService.getBooks().subscribe(books => this.books.set(books));
     });
   }
 
-  ngOnInit() {
-    this.pollingSubscription = interval(5000).subscribe(() => {
-      this.loadBooks();
-    });
-    this.bookService.getBooks().subscribe(res => this.books.set(res));
+  updateBookList(isBookEdited:boolean){
+    if (isBookEdited) {
+      this.bookService.getBooks().subscribe(books => this.books.set(books));
+    }
   }
 
-  ngOnDestroy() {
-      this.pollingSubscription?.unsubscribe();
-  }
+  filterBooks(): void{
+    const query = this.searchQuery.toLowerCase();
+    this.filteredBooks.set(
+      this.books().filter(book => book.title.toLowerCase().includes(query))
+    );
 
-  onBookDeleted(bookId: string) {
-    this.books.update(books => books.filter(book => book.id !== bookId));
   }
-
 }

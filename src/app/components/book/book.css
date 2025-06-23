@@ -5,8 +5,6 @@
     border-radius: 8px;
     background-color: #f9f9f9;
 }
-
-
 .star {
   display: inline-block;
   font-size: 1.5rem;
@@ -20,4 +18,30 @@
   -webkit-text-fill-color: transparent;
   font-family: Arial, sans-serif;
 }
+mat-card {
+  width: 20%;
+  display: inline-block;
+  margin-right: 2%;
 
+}
+
+mat-card-title{
+  margin-top: 2%;
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.EditButton{
+  background-color:turquoise;
+  color:black;
+}
+.EditButton:hover{
+  text-decoration: underline;
+}
+.DeleteButton{
+  background-color:turquoise;
+  color:black;
+}
+.DeleteButton:hover{
+  text-decoration: underline;
+}
